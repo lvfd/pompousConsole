@@ -50,8 +50,7 @@ const config = {
 				include: [
 					path.resolve(__dirname, 'node_modules/uikit/dist'),
 					path.resolve(__dirname, 'node_modules/chart.js/dist'),
-					path.resolve(__dirname, 'node_modules/dom4'),
-					path.resolve(__dirname, 'node_modules/jquery/dist')
+					path.resolve(__dirname, 'node_modules/dom4')
 				]
 			}
 		]

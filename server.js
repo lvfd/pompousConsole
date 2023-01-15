@@ -34,7 +34,7 @@ app.use(clientErrorHandler)
 app.use(errorHandler)
 
 app.listen(port, () => {
-  	console.log(`浮夸的控制台已经在 ${port} 端口运行了`)
+  	console.log(`浮夸的控制台已经在 ${port} 端口以 ${process.env.NODE_ENV} 模式运行了`)
 })
 
 function logErrors(err, req, res, next) {
