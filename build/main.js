@@ -3,7 +3,7 @@ import uk_js from 'uikit/dist/js/uikit.min.js'
 import dom4 from 'dom4'
 import logo from '@build/logo.svg'
 import init from '@build/init'
-import { cli2sys } from '@build/mychart'
+import { cli2sys, sys2sys, common, recharge } from '@build/mychart'
 
 document.write(`
 	<link type="text/css" rel="stylesheet" href="${uk_css}">
@@ -21,4 +21,7 @@ function mainFunction() {
 		console.error(e, e.stack)
 	}
 	cli2sys('cli2sys')
+	sys2sys('sys2sys')
+	common('common')
+	// recharge('recharge')
 }

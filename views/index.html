@@ -33,20 +33,37 @@
 	<main class="uk-flex">
 		<section class="uk-section uk-section-secondary uk-width-1-4">
             <p class="uk-heading-bullet">改造进度</p>
-            <p class="uk-label">客户端与系统之间</p>
             <canvas id="cli2sys" class="uk-background-muted">
             	<h2>客户端与系统之间canvas位置</h2>
             </canvas>
-            <p class="uk-label">系统之间</p>
-            <canvas id="sys2sys">
+            <canvas id="sys2sys" class="uk-background-muted">
             	<h2>系统之间canvas位置</h2>
             </canvas>
-            <p class="uk-label">通用</p>
-            <canvas id="common">
+            <canvas id="common" class="uk-background-muted">
             	<h2>通用canvas位置</h2>
             </canvas>
         </section>
-		<div class="uk-width-1-2"></div>
+		<div class="uk-width-1-2">
+			<div class="uk-flex uk-flex-center">
+				<canvas id="recharge" class="uk-background-muted">
+					<h2>充值canvas位置</h2>
+				</canvas>
+				<canvas id="account" class="uk-background-muted">
+					<h2>账户支付canvas位置</h2>
+				</canvas>
+			</div>
+			<div class="uk-flex uk-flex-center">
+				<canvas id="distill" class="uk-background-muted">
+					<h2>提现canvas位置</h2>
+				</canvas>
+				<canvas id="withoutaccount" class="uk-background-muted">
+					<h2>无账户支付canvas位置</h2>
+				</canvas>
+				<canvas id="transfer" class="uk-background-muted">
+					<h2>转账canvas位置</h2>
+				</canvas>
+			</div>
+		</div>
 		<div class="uk-width-1-4">
 			<div class="uk-tile uk-tile-muted">
             	<p class="uk-h4">Default</p>
