@@ -10,21 +10,48 @@
 </head>
 <body>
 	<h1 hidden>浮夸的控制台主页</h1>
-	<nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-center">
-        <div class="uk-navbar-center-left"><div>
-            <ul class="uk-navbar-nav">
-                <li><a id="mtime">时钟显示位置</a></li>
-                <li><a id="mdate">日历显示位置</a></li>
-            </ul>
-        </div></div>
-        <span class="uk-navbar-item uk-logo">德付通logo位置</span>
-        <div class="uk-navbar-center-right"><div>
-            <ul class="uk-navbar-nav">
-                <li><a>北京亚科技术开发有限责任公司</a></li>
-            </ul>
-        </div></div>
-    </div>
-</nav>
+	<nav class="uk-navbar-container uk-container" uk-navbar>
+		<div class="uk-navbar-left">
+        	<div>
+	            <ul class="uk-navbar-nav">
+	                <li><a id="mdate">日历显示位置</a></li>
+	                <li><a id="mtime">时钟显示位置</a></li>
+	            </ul>
+        	</div>
+        </div>
+    	<div class="uk-navbar-center">
+	        <span class="uk-navbar-item uk-logo">德付通logo位置</span>
+	    </div>
+	    <div class="uk-navbar-right">
+        	<div>
+	            <ul class="uk-navbar-nav">
+	                <li><a>北京亚科技术开发有限责任公司</a></li>
+	            </ul>
+        	</div>
+        </div>
+	</nav>
+	<main class="uk-flex">
+		<section class="uk-section uk-section-secondary uk-width-1-4">
+            <p class="uk-heading-bullet">改造进度</p>
+            <p class="uk-label">客户端与系统之间</p>
+            <canvas id="cli2sys" class="uk-background-muted">
+            	<h2>客户端与系统之间canvas位置</h2>
+            </canvas>
+            <p class="uk-label">系统之间</p>
+            <canvas id="sys2sys">
+            	<h2>系统之间canvas位置</h2>
+            </canvas>
+            <p class="uk-label">通用</p>
+            <canvas id="common">
+            	<h2>通用canvas位置</h2>
+            </canvas>
+        </section>
+		<div class="uk-width-1-2"></div>
+		<div class="uk-width-1-4">
+			<div class="uk-tile uk-tile-muted">
+            	<p class="uk-h4">Default</p>
+            </div>
+		</div>
+	</main>
 </body>
 </html>

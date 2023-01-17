@@ -1,5 +1,6 @@
 const path = require('path')
 const env = process.env.NODE_ENV
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
 const config = {
 	entry: {
 		main: './build/main'
@@ -49,7 +50,6 @@ const config = {
 				},
 				include: [
 					path.resolve(__dirname, 'node_modules/uikit/dist'),
-					path.resolve(__dirname, 'node_modules/chart.js/dist'),
 					path.resolve(__dirname, 'node_modules/dom4')
 				]
 			}
@@ -78,6 +78,9 @@ const config = {
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	},
+	plugins: [
+		new MomentLocalesPlugin()
+	],
 	resolve: {
 		alias: {
 			'@build': path.resolve(__dirname, 'build'),

@@ -29,6 +29,13 @@ app.get('/pompousConsole/data/static', (req, res) => {
     })
 })
 
+app.get('/pompousConsole/data/demo', (req, res) => {
+    fs.readFile(path.resolve(__dirname, 'data/demo.json'), 'utf-8', (err, data) => {
+        if(err) throw err
+        res.send(data)
+    })
+})
+
 app.use(logErrors)
 app.use(clientErrorHandler)
 app.use(errorHandler)

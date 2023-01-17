@@ -29,8 +29,16 @@ export default {
 			mtime.innerHTML = ''
 			const mdate = document.querySelector('#mdate')
 			mdate.innerHTML = ''
-			const m = moment()
-			
+			mtime.innerText = moment().format('HH:mm:ss')
+			mdate.innerText = moment().format('YYYY-MM-DD')
+			window.setInterval(setMoment, 1000)
+			function setMoment() {
+				const m = moment()
+				mtime.innerText = m.format('HH:mm:ss')
+				if (m.hour() === 0 && m.minute() === 0) {
+					mdate.innerText = m.format('YYYY-MM-DD')
+				}
+			}
 		} catch(e) {
 			console.error(e, e.stack)
 		}
