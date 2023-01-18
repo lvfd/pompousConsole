@@ -3,7 +3,7 @@ import uk_js from 'uikit/dist/js/uikit.min.js'
 import dom4 from 'dom4'
 import logo from '@build/logo.svg'
 import init from '@build/init'
-import { cli2sys, sys2sys, common, recharge } from '@build/mychart'
+import { bar, pie, line } from '@build/mychart'
 
 document.write(`
 	<link type="text/css" rel="stylesheet" href="${uk_css}">
@@ -17,11 +17,17 @@ function mainFunction() {
 	try {
 		init.logo({ url: logo, after: '商密改造作战大屏' })
 		init.moment()
+		init.right({ api: './data/demo' })
 	} catch(e) {
 		console.error(e, e.stack)
 	}
-	cli2sys('cli2sys')
-	sys2sys('sys2sys')
-	common('common')
-	// recharge('recharge')
+	bar({ id: 'cli2sys', api: './data/demo' })
+	bar({ id: 'sys2sys', api: './data/demo' })
+	bar({ id: 'common', api: './data/demo' })
+	pie({ id: 'recharge', api: './data/demo' })
+	pie({ id: 'account', api: './data/demo' })
+	pie({ id: 'distill', api: './data/demo' })
+	pie({ id: 'withoutaccount', api: './data/demo' })
+	pie({ id: 'transfer', api: './data/demo' })
+	line({ id: 'percentage', api: './data/demo' })
 }

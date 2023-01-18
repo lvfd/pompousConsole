@@ -1,4 +1,5 @@
 import moment from 'moment'
+import $ from 'jquery'
 
 export default {
 	logo: (args) => {
@@ -41,6 +42,40 @@ export default {
 			}
 		} catch(e) {
 			console.error(e, e.stack)
+		}
+	},
+	right: (args) => {
+		$.ajax({
+			type: 'GET',
+			dataType: 'json',
+			url: args.api,
+			error: (e) => console.error(e),
+			success: right
+		})
+		function right(res) {
+			try {
+				const date = document.createElement('span')
+				const recharge = document.createElement('span')
+				const distill = document.createElement('span')
+				const account = document.createElement('span')
+				const withoutaccount = document.createElement('span')
+				const transfer = document.createElement('span')
+				date.innerText = res.finished.date
+				recharge.innerText = `${res.finished.recharge.ready}笔`
+				distill.innerText = `${res.finished.distill.ready}笔`
+				account.innerText = `${res.finished.account.ready}笔`
+				withoutaccount.innerText = `${res.finished.withoutaccount.ready}笔`
+				transfer.innerText = `${res.finished.transfer.ready}笔`
+				document.getElementById('rdate').appendChild(date)
+				document.getElementById('rrecharge').appendChild(recharge)
+				document.getElementById('rdistill').appendChild(distill)
+				document.getElementById('raccount').appendChild(account)
+				document.getElementById('rwithoutaccount').appendChild(withoutaccount)
+				document.getElementById('rtransfer').appendChild(transfer)
+			} catch(e) {
+				console.error(e, e.stack)
+			}
+			
 		}
 	}
 }

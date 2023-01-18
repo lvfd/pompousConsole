@@ -8,12 +8,12 @@
 				{
 					"name": "confident",
 					"description": "报文传输机密性",
-					"value": "0.5193456789"
+					"value": "0.1193456789"
 				},
 				{
 					"name": "integrity",
 					"description": "报文传输完整性",
-					"value": "0.5"
+					"value": "1"
 				},
 				{
 					"name": "antideniability",
@@ -58,10 +58,11 @@
 		}
 	},
 	"finished": {
+		"date": "20221117",
 		"recharge": {
 			"description": "充值",
-			"ready": "2875",
-			"total": "2875"
+			"ready": "1500",
+			"total": "3000"
 		},
 		"account": {
 			"description": "账户支付",
@@ -70,17 +71,17 @@
 		},
 		"distill": {
 			"description": "提现",
-			"ready": "254",
+			"ready": "10",
 			"total": "254"
 		},
 		"withoutaccount": {
 			"description": "无账户支付",
-			"ready": "6895",
+			"ready": "6000",
 			"total": "6895"
 		},
 		"transfer": {
 			"description": "转账",
-			"ready": "25",
+			"ready": "20",
 			"total": "25"
 		}
 	},
@@ -131,43 +132,35 @@
 		},
 		{
 			"date": "20220904",
-			"value": "10"
+			"value": "0.1"
 		},
 		{
 			"date": "20221001",
-			"value": "15"
+			"value": "0.15"
 		},
 		{
 			"date": "20221002",
-			"value": "25"
+			"value": "0.25"
 		},
 		{
 			"date": "20221003",
-			"value": "50"
+			"value": "0.5"
 		},
 		{
 			"date": "20221004",
-			"value": "55"
+			"value": "0.55"
 		},
 		{
 			"date": "20221101",
-			"value": "75"
+			"value": "0.75"
 		},
 		{
 			"date": "20221102",
-			"value": "95"
+			"value": "0.95"
 		},
 		{
 			"date": "20221103",
-			"value": "100"
+			"value": "1"
 		}
-	],
-	"datastatistic": {
-		"date": "20221117",
-		"recharge": "2875",
-		"distill": "254",
-		"account": "521445",
-		"withoutaccount": "6895",
-		"transfer": "25"
-	}
+	]
 }
