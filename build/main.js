@@ -17,17 +17,17 @@ function mainFunction() {
 	try {
 		init.logo({ url: logo, after: '商密改造作战大屏' })
 		init.moment()
-		init.right({ api: './data/demo' })
+		init.right({ api: '/pompousConsole/data/demo' })
 	} catch(e) {
 		console.error(e, e.stack)
 	}
-	bar({ id: 'cli2sys', api: './data/demo' })
-	bar({ id: 'sys2sys', api: './data/demo' })
-	bar({ id: 'common', api: './data/demo' })
-	pie({ id: 'recharge', api: './data/demo' })
-	pie({ id: 'account', api: './data/demo' })
-	pie({ id: 'distill', api: './data/demo' })
-	pie({ id: 'withoutaccount', api: './data/demo' })
-	pie({ id: 'transfer', api: './data/demo' })
-	line({ id: 'percentage', api: './data/demo' })
+	bar({ id: 'cli2sys', api: '/pompousConsole/data/demo' })
+	bar({ id: 'sys2sys', api: '/pompousConsole/data/demo' })
+	bar({ id: 'common', api: '/pompousConsole/data/demo' })
+	pie({ id: 'recharge', api: '/pompousConsole/data/demo' })
+	pie({ id: 'account', api: '/pompousConsole/data/demo' })
+	pie({ id: 'distill', api: '/pompousConsole/data/demo' })
+	pie({ id: 'withoutaccount', api: '/pompousConsole/data/demo' })
+	pie({ id: 'transfer', api: '/pompousConsole/data/demo' })
+	line({ id: 'percentage', api: '/pompousConsole/data/demo' })
 }

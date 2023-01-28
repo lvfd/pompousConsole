@@ -1,12 +1,13 @@
 const path = require('path')
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV? process.env.NODE_ENV: 'production'
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = {
 	entry: {
 		main: './build/main'
 	},
-	devtool: 'inline-source-map',
-	mode: env === 'development'? 'development': 'production',
+	devtool: env === 'production'? 'source-map': 'inline-source-map',
+	mode: env,
 	module: {
 		rules: [
 			{
@@ -69,17 +70,36 @@ const config = {
 					name: 'libs',
 					filename: '[name].js',
 					test: /[\\/]node_modules[\\/]/
+				},
+				chart: {
+					name: 'chart',
+					filename: '[name].js',
+					test: /[\\/]node_modules[\\/]chart\.js[\\/]/,
+					priority: 1
+				},
+				jquery: {
+					name: 'jquery',
+					filename: '[name].js',
+					test: /[\\/]node_modules[\\/]jquery[\\/]/,
+					priority: 1
 				}
 			}
 		}
 	},
 	output: {
 		clean: true,
-		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist')
+		filename: '[name].[contenthash].js',
+		path: path.resolve(__dirname, env === 'production'? 'dist': 'test')
 	},
 	plugins: [
-		new MomentLocalesPlugin()
+		new MomentLocalesPlugin(),
+		new HtmlWebpackPlugin({
+			template: 'views/index.ejs',
+			filename: 'pages/index.html',
+			publicPath: '/pompousConsole/dist',
+			inject: 'head',
+			scriptLoading: 'blocking'
+		})
 	],
 	resolve: {
 		alias: {
@@ -87,7 +107,7 @@ const config = {
 			'@data': path.resolve(__dirname, 'data')
 		}
 	},
-	watch: true,
+	watch: env === 'development'? true: false,
 	watchOptions: {
 		aggregateTimeout: 1000,
 		ignored: /node_modules/

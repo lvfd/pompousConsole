@@ -80,7 +80,8 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# Cunstom revised by lvfd
+#dist
 
 # Gatsby files
 .cache/
@@ -103,5 +104,7 @@ dist
 # TernJS port file
 .tern-port
 
+# Custom
 package-lock.json
 .DS_Store
+test/*
