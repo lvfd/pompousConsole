@@ -23,6 +23,10 @@
         	<div>
 	            <ul class="uk-navbar-nav">
 	                <li><a>北京亚科技术开发有限责任公司</a></li>
+	                <% if (process.env.NODE_ENV === 'development') { %>
+	                <li><a href="http://10.1.51.73:28080/doveMgr/servlet/domesticCryptographicBoard" target="_blank">51.73:28080</a></li>
+	                <li><a href="/pompousConsole/data/demo" target="_blank">demo data</a></li>
+	                <% } %>
 	            </ul>
         	</div>
         </div>
