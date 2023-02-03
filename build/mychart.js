@@ -196,6 +196,11 @@ export function line(config) {
 		success: canvas
 	})
 	function canvas(res) {
+		const wrap = config.wrap? document.getElementById(config.wrap): null
+		if (wrap) {
+			wrap.style.height = '50vh'
+			wrap.style.width = (res.percentage.length) * 10 + '%'
+		}
 		const ctx = document.getElementById(config.id)
 		const chart = new Chart(ctx, {
 			type: 'line',
@@ -211,6 +216,7 @@ export function line(config) {
 				layout: {
 					padding: 20
 				},
+				maintainAspectRatio: wrap? false: true,
 				plugins: {
 					datalabels: {
 						align: 'top',
@@ -242,7 +248,14 @@ export function line(config) {
 							}
 						}
 					}
-				}
+				},
+				scales: {
+					y: {
+						ticks: {
+							callback: label => label * 100 + '%',
+						}
+					}
+				},
 			}
 		})
 		function labels(res) {
