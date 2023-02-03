@@ -14,8 +14,8 @@ document.write(`
 window.addEventListener('DOMContentLoaded', mainFunction)
 
 function mainFunction() {
-	// const api = 'http://10.1.51.73:28080/doveMgr/servlet/domesticCryptographicBoard'
-	const api = '/pompousConsole/data/demo'
+	const api = 'http://10.1.51.73:28080/doveMgr/servlet/domesticCryptographicBoard'
+	// const api = '/pompousConsole/data/demo'
 	try {
 		init.logo({ url: logo, after: '商密改造作战大屏' })
 		init.moment()

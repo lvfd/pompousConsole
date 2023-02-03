@@ -220,7 +220,7 @@ export function line(config) {
 				plugins: {
 					datalabels: {
 						align: 'top',
-						formatter: value => Math.round(value * 100) + '%'
+						formatter: value => Math.round(value) + '%'
 					},
 					legend: {
 						display: false
@@ -242,7 +242,7 @@ export function line(config) {
 									label += ': '
 								}
 								if (context.parsed.y !== null) {
-									label += Math.round(context.parsed.y * 100) + '%'
+									label += Math.round(context.parsed.y) + '%'
 								}
 								return label
 							}
@@ -252,7 +252,7 @@ export function line(config) {
 				scales: {
 					y: {
 						ticks: {
-							callback: label => label * 100 + '%',
+							callback: label => label + '%',
 						}
 					}
 				},
