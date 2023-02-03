@@ -1,5 +1,6 @@
 module.exports = {
 	apps: [{
+		name: 'pompous-console',
 		script: 'server.js',
 		watch: ['data', 'views', 'server.js'],
 		watch_delay: 1000,
