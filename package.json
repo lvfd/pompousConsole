@@ -1,6 +1,6 @@
 {
   "name": "@lyufudi/pompous-console",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "",
   "scripts": {
@@ -46,7 +46,8 @@
   },
   "files": [
     "server.js",
-    "dist/",
+    "project.config.js",
+    "dist",
     "data"
   ]
 }

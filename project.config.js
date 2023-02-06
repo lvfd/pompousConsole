@@ -1,3 +1,3 @@
 module.exports = {
-  project_name: 'doveUiServer/domesticCryptographicBoard',
+  project_name: 'domesticCryptographicBoard',
 }
