@@ -75,7 +75,16 @@ export default {
 			} catch(e) {
 				console.error(e, e.stack)
 			}
-			
 		}
+	},
+	broadcast: (args) => {
+		$.ajax({
+			type: 'GET',
+			url: args.api,
+			error: (e) => console.error(e),
+			success: function(res) {
+				document.getElementById('broadcast').innerText = JSON.parse(res).broadcast
+			}
+		})
 	}
 }

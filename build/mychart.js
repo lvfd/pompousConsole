@@ -133,7 +133,11 @@ export function pie(config) {
 					data: [res.finished[config.id].total],
 					datalabels: {
 						anchor: 'start',
-						color: 'white',
+						color: context => {
+							const index = context.dataIndex
+							const value = context.dataset.data[index]
+							return value == 0 ? 'black': 'white'
+						},
 						font: {
 							size: 10
 						},
@@ -182,7 +186,7 @@ export function pie(config) {
 		}
 		function subtitle(res) {
 			const r = res.finished[config.id].ready / res.finished[config.id].total
-			return `完成率: ${Math.round(r * 100)}%`
+			return `完成率: ${isNaN(r)? '-- ': Math.round(r * 100)}%`
 		}
 	}
 }

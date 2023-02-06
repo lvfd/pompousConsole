@@ -61,8 +61,8 @@
 		"date": "20221117",
 		"recharge": {
 			"description": "充值",
-			"ready": "1500",
-			"total": "3000"
+			"ready": "0",
+			"total": "0"
 		},
 		"account": {
 			"description": "账户支付",

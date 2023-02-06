@@ -2,6 +2,7 @@ const path = require('path')
 const env = process.env.NODE_ENV? process.env.NODE_ENV: 'production'
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const project_name = require('./project.config').project_name
 const config = {
 	entry: {
 		main: './build/main'
@@ -95,10 +96,27 @@ const config = {
 		new MomentLocalesPlugin(),
 		new HtmlWebpackPlugin({
 			template: 'views/index.ejs',
-			filename: 'pages/index.html',
-			publicPath: '/pompousConsole/dist',
+			filename: 'pages/index_demo.html',
+			publicPath: `/${project_name}/dist`,
 			inject: 'head',
-			scriptLoading: 'blocking'
+			scriptLoading: 'blocking',
+			templateParameters: {
+				api: `/${project_name}/data/demo`,
+				staticData: `/${project_name}/data/static`,
+				project_name: project_name
+			}
+		}),
+		new HtmlWebpackPlugin({
+			template: 'views/index.ejs',
+			filename: 'pages/index_real.html',
+			publicPath: `/${project_name}/dist`,
+			inject: 'head',
+			scriptLoading: 'blocking',
+			templateParameters: {
+				api: 'http://10.1.51.73:28080/doveMgr/servlet/domesticCryptographicBoard',
+				staticData: `/${project_name}/data/static`,
+				project_name: project_name
+			}
 		})
 	],
 	resolve: {

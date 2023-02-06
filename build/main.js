@@ -14,12 +14,13 @@ document.write(`
 window.addEventListener('DOMContentLoaded', mainFunction)
 
 function mainFunction() {
-	const api = 'http://10.1.51.73:28080/doveMgr/servlet/domesticCryptographicBoard'
-	// const api = '/pompousConsole/data/demo'
+	const api = document.getElementById('api').value
+	const staticData = document.getElementById('staticData').value
 	try {
 		init.logo({ url: logo, after: '商密改造作战大屏' })
 		init.moment()
 		init.right({ api: api })
+		init.broadcast({ api: staticData})
 	} catch(e) {
 		console.error(e, e.stack)
 	}

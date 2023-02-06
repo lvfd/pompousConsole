@@ -9,28 +9,37 @@ const app = express()
 const port = 3000
 const distPath = env === 'production'? 'dist': 'test'
 
+const project_name = require('./project.config').project_name
 
 app.set('view engine', 'html')
 app.engine('html', ejs.__express)
 app.set('views', path.resolve(__dirname, distPath, 'pages'))
-app.use('/pompousConsole/dist', express.static(path.resolve(__dirname, distPath)))
+app.use(`/${project_name}/dist`, express.static(path.resolve(__dirname, distPath)))
 
 app.get('/', (req, res) => {
 	res.send('浮夸的控制台Server已经运行了')
 })
 
-app.get('/pompousConsole', (req, res) => {
-	res.render('index.html')
+app.get(`/${project_name}`, (req, res) => {
+	res.redirect(`/${project_name}/real`)
 })
 
-app.get('/pompousConsole/data/static', (req, res) => {
+app.get(`/${project_name}/real`, (req, res) => {
+    res.render('index_real.html')
+})
+
+app.get(`/${project_name}/demo`, (req, res) => {
+    res.render('index_demo.html')
+})
+
+app.get(`/${project_name}/data/static`, (req, res) => {
     fs.readFile(path.resolve(__dirname, 'data/static.json'), 'utf-8', (err, data) => {
         if (err) throw err
         res.send(data)
     })
 })
 
-app.get('/pompousConsole/data/demo', (req, res) => {
+app.get(`/${project_name}/data/demo`, (req, res) => {
     fs.readFile(path.resolve(__dirname, 'data/demo.json'), 'utf-8', (err, data) => {
         if(err) throw err
         res.send(data)
