@@ -113,7 +113,7 @@ const config = {
 			inject: 'head',
 			scriptLoading: 'blocking',
 			templateParameters: {
-				api: 'https://test.dovepay.com:8443/doveMgr/servlet/domesticCryptographicBoard',
+				api: 'https://test.dovepay.com/dovepay-user-web/domesticCryptographicBoard/query.do',
 				staticData: `/${project_name}/data/static`,
 				project_name: project_name
 			}
