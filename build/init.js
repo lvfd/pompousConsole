@@ -45,11 +45,12 @@ export default {
 		}
 	},
 	right: (args) => {
+		if (!args.api) return right(args.data)
 		$.ajax({
 			type: 'GET',
 			dataType: 'json',
 			url: args.api,
-			error: (e) => console.error(e),
+			error: e => console.error(e),
 			success: right
 		})
 		function right(res) {

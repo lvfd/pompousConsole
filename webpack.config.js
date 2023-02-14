@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV? process.env.NODE_ENV: 'production'
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const project_name = require('./project.config').project_name
+const webpack = require('webpack')
 const config = {
 	entry: {
 		main: './build/main'
@@ -54,7 +55,16 @@ const config = {
 					path.resolve(__dirname, 'node_modules/uikit/dist'),
 					path.resolve(__dirname, 'node_modules/dom4')
 				]
-			}
+			},
+			{
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+        options: {
+          variable: 'data',
+          interpolate : '\\{\\{(.+?)\\}\\}',
+          evaluate : '\\[\\[(.+?)\\]\\]'
+        }
+      }
 		]
 	},
 	name: 'pompousConsole',
@@ -94,29 +104,15 @@ const config = {
 	},
 	plugins: [
 		new MomentLocalesPlugin(),
+		new webpack.ProvidePlugin({
+        _: "underscore"
+    }),
 		new HtmlWebpackPlugin({
 			template: 'views/index.ejs',
-			filename: 'pages/index_demo.html',
+			filename: 'pages/index.html',
 			publicPath: `/${project_name}/dist`,
 			inject: 'head',
-			scriptLoading: 'blocking',
-			templateParameters: {
-				api: `/${project_name}/data/demo`,
-				staticData: `/${project_name}/data/static`,
-				project_name: project_name
-			}
-		}),
-		new HtmlWebpackPlugin({
-			template: 'views/index.ejs',
-			filename: 'pages/index_real.html',
-			publicPath: `/${project_name}/dist`,
-			inject: 'head',
-			scriptLoading: 'blocking',
-			templateParameters: {
-				api: 'https://test.dovepay.com/dovepay-user-web/domesticCryptographicBoard/query.do',
-				staticData: `/${project_name}/data/static`,
-				project_name: project_name
-			}
+			scriptLoading: 'blocking'
 		})
 	],
 	resolve: {

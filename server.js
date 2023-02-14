@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser')
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const ejs = require('ejs')
 const env = process.env.NODE_ENV? process.env.NODE_ENV: 'production'
 const express = require('express')
@@ -20,17 +21,53 @@ app.get('/', (req, res) => {
 	res.send('浮夸的控制台Server已经运行了')
 })
 
-app.get(`/${project_name}`, (req, res) => {
-	res.redirect(`/${project_name}/real`)
+app.post(`/${project_name}/login`, urlencodedParser, (req, res) => {
+    res.render('index.html', { 
+        title: 'real',
+        project_name: project_name,
+        data: req.body.data,
+        api: null,
+        staticData: `/${project_name}/data/static`,
+    })
 })
 
-app.get(`/${project_name}/real`, (req, res) => {
-    res.render('index_real.html')
-})
+if (env === 'development') {
+    app.get(`/${project_name}/post`, (req, res) => {
+        fs.readFile(path.resolve(__dirname, 'data/real.json'), 'utf-8', (err, data) => {
+            if (err) throw err
+            res.send(`
+                <form action="/${project_name}/login" method="post">
+                    <input type="hidden" name="data" value='${data}'>
+                    <input type="submit" value="testpost">
+                </form>
+            `)
+        })
+    })
 
-app.get(`/${project_name}/demo`, (req, res) => {
-    res.render('index_demo.html')
-})
+    app.get(`/${project_name}`, (req, res) => {
+        res.redirect(`/${project_name}/real`)
+    })
+
+    app.get(`/${project_name}/real`, (req, res) => {
+        res.render('index.html', { 
+            title: 'real',
+            project_name: project_name,
+            data: null,
+            api: 'https://test.dovepay.com/dovepay-user-web/domesticCryptographicBoard/query.do',
+            staticData: `/${project_name}/data/static`,
+        })
+    })
+
+    app.get(`/${project_name}/demo`, (req, res) => {
+        res.render('index.html', { 
+            title: 'demo',
+            project_name: project_name,
+            data: null,
+            api: `/${project_name}/data/demo`,
+            staticData: `/${project_name}/data/static`,
+        })
+    })
+}
 
 app.get(`/${project_name}/data/static`, (req, res) => {
     fs.readFile(path.resolve(__dirname, 'data/static.json'), 'utf-8', (err, data) => {

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<input type="hidden" id="api" value="<%= api %>">
+  <input type="hidden" id="data" value="<%= data %>">
 	<input type="hidden" id="staticData" value="<%= staticData %>">
   <h1 hidden>浮夸的控制台主页</h1>
   <nav class="uk-navbar-container uk-container uk-container-expand" uk-navbar>
@@ -25,11 +26,7 @@
         <div>
             <ul class="uk-navbar-nav">
                 <li><a>北京亚科技术开发有限责任公司</a></li>
-                <% 
-                if (process.env.NODE_ENV === 'development') { 
-                const apiIsDemo = api === `/${project_name}/data/demo`
-                %>
-                <li><a href="<%- apiIsDemo? `/${project_name}/real`: `/${project_name}/demo` %>">切换<%- apiIsDemo? '真实': 'DEMO' %>数据</a></li>
+                <% if (process.env.NODE_ENV === 'development') { %>
                 <li><a href="<%= api %>" target="_blank">访问数据</a></li>
                 <% } %>
             </ul>

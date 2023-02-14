@@ -6,6 +6,7 @@ Chart.register(ChartDataLabels)
 Chart.defaults.set('plugins.datalabels', {})
 
 export function bar(config) {
+	if (!config.api) return canvas(config.data)
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
@@ -97,6 +98,7 @@ export function bar(config) {
 }
 
 export function pie(config) {
+	if (!config.api) return canvas(config.data)
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
@@ -192,6 +194,7 @@ export function pie(config) {
 }
 
 export function line(config) {
+	if (!config.api) return canvas(config.data)
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
