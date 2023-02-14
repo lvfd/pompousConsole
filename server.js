@@ -8,6 +8,7 @@ const path = require('path')
 
 const app = express()
 const port = 3000
+// test.dovepay: 3014
 const distPath = env === 'production'? 'dist': 'test'
 
 const project_name = require('./project.config').project_name
@@ -31,19 +32,19 @@ app.post(`/${project_name}/login`, urlencodedParser, (req, res) => {
     })
 })
 
-if (env === 'development') {
-    app.get(`/${project_name}/post`, (req, res) => {
-        fs.readFile(path.resolve(__dirname, 'data/real.json'), 'utf-8', (err, data) => {
-            if (err) throw err
-            res.send(`
-                <form action="/${project_name}/login" method="post">
-                    <input type="hidden" name="data" value='${data}'>
-                    <input type="submit" value="testpost">
-                </form>
-            `)
-        })
+app.get(`/${project_name}/post`, (req, res) => {
+    fs.readFile(path.resolve(__dirname, 'data/real.json'), 'utf-8', (err, data) => {
+        if (err) throw err
+        res.send(`
+            <form action="/${project_name}/login" method="post">
+                <input type="hidden" name="data" value='${data}'>
+                <input type="submit" value="testpost">
+            </form>
+        `)
     })
+})
 
+if (env === 'development') {
     app.get(`/${project_name}`, (req, res) => {
         res.redirect(`/${project_name}/real`)
     })
