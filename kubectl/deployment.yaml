@@ -42,12 +42,6 @@ spec:
             requests:
               cpu: 100m
               memory: 256Mi
-          readinessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - '-c'
-                - 'ls'
           volumeMounts:
             - name: app-file
               mountPath: /epaynas
