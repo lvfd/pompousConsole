@@ -2,7 +2,7 @@
 
 # FROM node:18.13.0-alpine
 # FROM 10.1.85.22:1034/library/node:18.13.0-alpine
-FROM registry.ocp.dovepay/library/node:18.13.0-alpine
+FROM registry.ocp.dovepay/imagepri/node:18.18.0-alpine
 ENV NODE_ENV=production
 
 # Create app directory
@@ -23,7 +23,7 @@ COPY package*.json ./
 # RUN npm ci --only=production
 RUN npm ci --omit=dev
 
-RUN rm -f .npmrc
+RUN rm .npmrc
 
 # Bundle app source
 COPY . .
